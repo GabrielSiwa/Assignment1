@@ -4,14 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tailwind + JS Assignment</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-900">
+<!-- Create a nav bar that has Weight, Distance & Temperature -->
 
-  <!-- Example container with a button and a result area -->
   <div class="flex justify-center items-center min-h-screen">
     <div class="bg-white p-6 rounded-lg shadow-lg">
-      <button id="myButton" class="bg-blue-500 text-white py-2 px-4 rounded">Click Me</button>
+      <h1 class="text-2xl font-bold text-center">Tailwind + JS Assignment</h1>
+      <!--Input fields -->
+      <input id="input-value" type="text" class="w-full mt-4 p-2 border border-gray-300 rounded" placeholder="Enter a value">
+      <!-- Output field -->
+      <input id="output-value" type="text" class="w-full mt-4 p-2 border border-gray-300 rounded" placeholder="Output value" disabled>
+      <!--Button -->  
+      <button id="convert-button" class="bg-blue-500 text-white mt-5 py-2 px-4 rounded">Convert!</button>
       <div id="result" class="mt-4 text-center text-xl hidden">
         <p>You clicked the button!</p>
       </div>
