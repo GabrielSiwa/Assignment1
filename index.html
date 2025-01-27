@@ -17,16 +17,21 @@
   <div class="flex justify-center items-center min-h-screen">
     <div class="bg-white p-6 rounded-lg shadow-lg">
       <h1 class="text-2xl font-bold text-center">Tailwind + JS Assignment</h1>
-      <div class="relative">
-        <input id="input-value" type="text" class="w-full p-2 pl-12 border border-gray-300 rounded" placeholder="Enter a value">
-        <select id="unit-select" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded px-2 py-1 text-gray-900">
-          <option value="miles">miles</option>
-          <option value="km">km</option>
+      <div class="relative mt-4">
+        <select id="unit-select" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white border border-gray-200 rounded px-2 py-1 text-gray-900">
+        <option value="miles">mi</option>
+        <option value="km">km</option>
         </select>
+        <input id="input-value" type="text" class="w-full p-2 border border-gray-300 rounded" placeholder="Enter a value">
       </div>
+      <div class="relative mt-4">
       <!-- Output field -->
       <input id="output-value" type="text" class="w-full mt-4 p-2 border border-gray-300 rounded" placeholder="Output value" disabled>
       <!--Button -->  
+      <span id="output-unit" class="absolute right-2 top-7 text-sm px-1 rounded">
+      km
+      </span>
+      </div>
       <button id="convert-button" class="bg-blue-800 text-white mt-5 py-2 px-4 rounded hover:bg-blue-500 transition duration-200">Convert!</button>
     </div>
   </div>
