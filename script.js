@@ -32,16 +32,67 @@ document.addEventListener("DOMContentLoaded", () => {
       kmToMiles: 0.621371,
     };
 
-    return (input) => {
+
+    //Function to perform distance conversion
+    const performDistanceCalc = (input, fromUnit, toUnit) => {
+      const conversionFactors = {
+        milesToKm: 1.60934,
+        kmToMiles: 0.621371,
+      };
+  
       const factor =
         fromUnit === "miles" && toUnit === "km"
           ? conversionFactors.milesToKm
           : conversionFactors.kmToMiles;
-          
+  
       if (Array.isArray(input)) {
         return input.map((value) => parseFloat(value) * factor);
       }
       return parseFloat(input) * factor;
+    };
+
+    //Function to perform temperature conversion
+    const performTemperatureCalc = (input, fromUnit, toUnit) => {
+      if (fromUnit === "fahrenheit" && toUnit === "celsius") {
+        // Fahrenheit to Celsius: (F - 32) * (5/9)
+        return (parseFloat(input) - 32) * (5 / 9);
+      } else if (fromUnit === "celsius" && toUnit === "fahrenheit") {
+        // Celsius to Fahrenheit: (C * 9/5) + 32
+        return parseFloat(input) * (9 / 5) + 32;
+      }
+      return parseFloat(input); // Default: return input as-is
+    };
+
+
+    //Function to perform weight conversion
+    const performWeightCalc = (input, fromUnit, toUnit) => {
+      const conversionFactors = {
+        poundsToKg: 1, //@nicole pls update
+        kgToPounds: 1, //@nicole pls update
+      };
+  
+      const factor =
+        fromUnit === "pounds" && toUnit === "kilograms"
+          ? conversionFactors.poundsToKg
+          : conversionFactors.kgToPounds;
+  
+      if (Array.isArray(input)) {
+        return input.map((value) => parseFloat(value) * factor);
+      }
+      return parseFloat(input); //@nicole pls update
+     };
+
+    return (input) => {
+      switch (currentCategory) {
+        case "distance":
+          return performDistanceCalc(input, fromUnit, toUnit);
+        case "temperature":
+          return performTemperatureCalc(input, fromUnit, toUnit);
+        case "weight":
+          return performWeightCalc(input, fromUnit, toUnit);
+        default:
+          return parseFloat(input);
+      }
     };
   };
 
