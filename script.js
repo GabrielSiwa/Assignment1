@@ -67,8 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //Function to perform weight conversion
     const performWeightCalc = (input, fromUnit, toUnit) => {
       const conversionFactors = {
-        poundsToKg: 1, //@nicole pls update
-        kgToPounds: 1, //@nicole pls update
+        poundsToKg: 0.453592,
+        kgToPounds: 2.20462,
       };
   
       const factor =
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (Array.isArray(input)) {
         return input.map((value) => parseFloat(value) * factor);
       }
-      return parseFloat(input); //@nicole pls update
+      return parseFloat(input) * factor;
      };
 
     return (input) => {
