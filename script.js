@@ -1,3 +1,17 @@
+/********************************************************************************************************************
+ *    CPRG-306-F - WINTER 2025                                                                                      *
+ *    Group 3 : Members                                                                                             *
+ *    (1) Bryan Benedict Teruel                                                                                     *
+ *    (2) Alessandra Nicole Claur                                                                                   *
+ *    (3) Lulubelle Fontelo                                                                                         *
+ *                                                                                                                  *
+ ********************************************************************************************************************
+ *  Created:    February 06, 2025
+ *  Assignment: Build a responsive static website to convert between metric units and imperial units
+ * (i.e., between kilograms and pounds, kilometres and miles, and Celsius and Fahrenheit).
+ *
+ *
+ */
 document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.getElementById("input-value");
   const outputField = document.getElementById("output-value");
@@ -32,19 +46,18 @@ document.addEventListener("DOMContentLoaded", () => {
       kmToMiles: 0.621371,
     };
 
-
     //Function to perform distance conversion
     const performDistanceCalc = (input, fromUnit, toUnit) => {
       const conversionFactors = {
         milesToKm: 1.60934,
         kmToMiles: 0.621371,
       };
-  
+
       const factor =
         fromUnit === "miles" && toUnit === "km"
           ? conversionFactors.milesToKm
           : conversionFactors.kmToMiles;
-  
+
       if (Array.isArray(input)) {
         return input.map((value) => parseFloat(value) * factor);
       }
@@ -63,24 +76,23 @@ document.addEventListener("DOMContentLoaded", () => {
       return parseFloat(input); // Default: return input as-is
     };
 
-
     //Function to perform weight conversion
     const performWeightCalc = (input, fromUnit, toUnit) => {
       const conversionFactors = {
         poundsToKg: 0.453592,
         kgToPounds: 2.20462,
       };
-  
+
       const factor =
         fromUnit === "pounds" && toUnit === "kilograms"
           ? conversionFactors.poundsToKg
           : conversionFactors.kgToPounds;
-  
+
       if (Array.isArray(input)) {
         return input.map((value) => parseFloat(value) * factor);
       }
       return parseFloat(input) * factor;
-     };
+    };
 
     return (input) => {
       switch (currentCategory) {
@@ -98,7 +110,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to get the label of a unit
   const getUnitLabel = (category, unit) => {
-    return conversionOptions[category].find((option) => option.value === unit)?.label || "";
+    return (
+      conversionOptions[category].find((option) => option.value === unit)
+        ?.label || ""
+    );
   };
 
   // Update the dropdown and output unit when category changes
@@ -120,7 +135,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Handle dropdown change
   unitSelect.addEventListener("change", (e) => {
     const selectedUnit = e.target.value;
-    const otherUnit = conversionOptions[currentCategory].find((opt) => opt.value !== selectedUnit).value;
+    const otherUnit = conversionOptions[currentCategory].find(
+      (opt) => opt.value !== selectedUnit
+    ).value;
 
     fromUnit = selectedUnit;
     toUnit = otherUnit;
@@ -132,15 +149,27 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("nav li").forEach((item) => {
     item.addEventListener("click", (e) => {
       document.querySelectorAll("nav li").forEach((li) => {
-        li.classList.remove("bg-blue-500", "text-white", "ring-2", "ring-blue-400");
+        li.classList.remove(
+          "bg-blue-500",
+          "text-white",
+          "ring-2",
+          "ring-blue-400"
+        );
         li.classList.add("bg-gray-200", "text-gray-900");
       });
 
       const selectedItem = e.target;
-      selectedItem.classList.add("bg-blue-500", "text-white", "ring-2", "ring-blue-400");
+      selectedItem.classList.add(
+        "bg-blue-500",
+        "text-white",
+        "ring-2",
+        "ring-blue-400"
+      );
       selectedItem.classList.remove("bg-gray-200", "text-gray-900");
 
-      currentCategory = selectedItem.getAttribute("data-category").toLowerCase();
+      currentCategory = selectedItem
+        .getAttribute("data-category")
+        .toLowerCase();
       updateCategory(currentCategory);
 
       outputUnit.textContent = getUnitLabel(currentCategory, toUnit);
@@ -164,7 +193,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const converter = createConverter(fromUnit, toUnit);
       const convertedValues = inputValues.map((value) => converter(value));
 
-      outputField.value = convertedValues.map((val) => val.toFixed(3)).join(", ");
+      outputField.value = convertedValues
+        .map((val) => val.toFixed(3))
+        .join(", ");
     }
   });
 
