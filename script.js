@@ -1,9 +1,10 @@
 /********************************************************************************************************************
  *    CPRG-306-F - WINTER 2025                                                                                      *
  *    Group 3 : Members                                                                                             *
- *    (1) Bryan Benedict Teruel                                                                                     *
- *    (2) Alessandra Nicole Claur                                                                                   *
- *    (3) Lulubelle Fontelo                                                                                         *
+ *    (1) Alessandra Nicole Claur                                                                                   *
+ *    (2) Gabriel Siwa                                                                                   *
+ *    (3) Mitzi Escartin
+ *    (4) Lulubelle Fontelo                                                                                         *
  *                                                                                                                  *
  ********************************************************************************************************************
  *  Created:    February 06, 2025
