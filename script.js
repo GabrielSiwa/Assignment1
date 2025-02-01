@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let fromUnit = "miles";
   let toUnit = "km";
 
-  // Conversion options for each category
+  // Conversion options for different categories
   const conversionOptions = {
     distance: [
       { value: "miles", label: "mi" },
@@ -40,14 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
     ],
   };
 
-  // Conversion factor logic
+  // Function to handle unit conversion based on selected category
   const createConverter = (fromUnit, toUnit) => {
     const conversionFactors = {
       milesToKm: 1.60934,
       kmToMiles: 0.621371,
     };
 
-    //Function to perform distance conversion
+    // Function to handle distance conversion
     const performDistanceCalc = (input, fromUnit, toUnit) => {
       const conversionFactors = {
         milesToKm: 1.60934,
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return parseFloat(input) * factor;
     };
 
-    //Function to perform temperature conversion
+    // Function to handle temperature conversion
     const performTemperatureCalc = (input, fromUnit, toUnit) => {
       if (fromUnit === "fahrenheit" && toUnit === "celsius") {
         // Fahrenheit to Celsius: (F - 32) * (5/9)
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return parseFloat(input); // Default: return input as-is
     };
 
-    //Function to perform weight conversion
+    // Function to handle weight conversion
     const performWeightCalc = (input, fromUnit, toUnit) => {
       const conversionFactors = {
         poundsToKg: 0.453592,
@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return parseFloat(input) * factor;
     };
 
+    // Switch between conversion functions based on the current category
     return (input) => {
       switch (currentCategory) {
         case "distance":
@@ -109,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   };
 
-  // Function to get the label of a unit
+  // Function to retrieve the display label of a unit
   const getUnitLabel = (category, unit) => {
     return (
       conversionOptions[category].find((option) => option.value === unit)
@@ -146,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     outputUnit.textContent = getUnitLabel(currentCategory, toUnit);
   });
 
-  // Handle category changes via nav items
+  // Handle category selection from the navigation menu
   document.querySelectorAll("nav li").forEach((item) => {
     item.addEventListener("click", (e) => {
       document.querySelectorAll("nav li").forEach((li) => {
@@ -168,6 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       selectedItem.classList.remove("bg-gray-200", "text-gray-900");
 
+      // Update the current category and refresh conversion units
       currentCategory = selectedItem
         .getAttribute("data-category")
         .toLowerCase();
@@ -186,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     outputField.value = "";
   };
 
-  // Conversion on button click
+  // Handle conversion when the button is clicked
   convertButton.addEventListener("click", () => {
     const inputValues = inputField.value.split(",").map((val) => val.trim());
 
