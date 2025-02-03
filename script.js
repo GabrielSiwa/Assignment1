@@ -11,6 +11,24 @@
  *  Assignment: Build a responsive static website to convert between metric units and imperial units
  * (i.e., between kilograms and pounds, kilometres and miles, and Celsius and Fahrenheit).
  *
+ *  Description:
+ *  This script provides unit conversion functionality for weight, distance, and temperature categories. It dynamically
+ *  updates UI elements and processes user input to convert between metric and imperial units. The script implements
+ *  a higher-order function to handle unit conversions and ensures responsiveness through event listeners.
+ *
+ *  Inputs:
+ *  - User selects a category (Weight, Distance, Temperature)
+ *  - User enters a single value or a comma-separated list of values in the input field
+ *  - User selects the conversion direction (e.g., pounds to kilograms)
+ *
+ *  Processing:
+ *  - A higher-order function creates a conversion function based on selected units
+ *  - The conversion function applies appropriate mathematical formulas
+ *  - UI is dynamically updated based on category selection
+ *
+ *  Outputs:
+ *  - Converted value(s) displayed in the output field
+ *  - Unit labels are updated dynamically based on the selected conversion category
  *
  */
 document.addEventListener("DOMContentLoaded", () => {
@@ -47,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
       kmToMiles: 0.621371,
     };
 
-    // Function to handle distance conversion
+    // Performs distance conversion.
     const performDistanceCalc = (input, fromUnit, toUnit) => {
       const conversionFactors = {
         milesToKm: 1.60934,
@@ -65,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return parseFloat(input) * factor;
     };
 
-    // Function to handle temperature conversion
+    //  Performs temperature conversion.
     const performTemperatureCalc = (input, fromUnit, toUnit) => {
       if (fromUnit === "fahrenheit" && toUnit === "celsius") {
         // Fahrenheit to Celsius: (F - 32) * (5/9)
@@ -77,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return parseFloat(input); // Default: return input as-is
     };
 
-    // Function to handle weight conversion
+    // Performs weight conversion.
     const performWeightCalc = (input, fromUnit, toUnit) => {
       const conversionFactors = {
         poundsToKg: 0.453592,
